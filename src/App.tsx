@@ -4,9 +4,19 @@ import viteLogo from "/vite.svg";
 
 function App() {
   const [bar, setBar] = useState(0);
+  const [carga, setCarga] = useState(60);
   let barras = [];
   for (let i = 0; i <= bar; i++) {
-    barras.push(<div key={i} className="border-4 border-[#2d3f50] h-8"></div>);
+    barras.push(
+      <div key={i} className="border-4 border-[#2d3f50]  h-8">
+        <div
+          style={{
+            width: carga + "%",
+          }}
+          className="bg-blue-500 h-6"
+        ></div>
+      </div>
+    );
   }
 
   function handleClick() {
