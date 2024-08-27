@@ -6,7 +6,7 @@ function App() {
   const [bar, setBar] = useState(0);
   let barras = [];
   for (let i = 0; i <= bar; i++) {
-    barras.push(<div key={i}>barra</div>);
+    barras.push(<div key={i} className="border-4 border-[#2d3f50] h-8"></div>);
   }
 
   function handleClick() {
@@ -21,7 +21,7 @@ function App() {
       >
         + Add
       </button>
-      <div className="border-4 border-[#2d3f50] h-8"></div>
+
       {barras}
     </div>
   );
