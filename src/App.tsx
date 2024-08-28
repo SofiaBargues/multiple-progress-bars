@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function ProgressBar({ key, charge }) {
+function ProgressBar({ key, charge }: { key: number; charge: number }) {
   if (charge > 100 && 0 > charge) {
     // console.log("charge is not in range");x
   }
@@ -18,14 +18,29 @@ function ProgressBar({ key, charge }) {
 
 export function App() {
   const [bar, setBar] = useState(0);
-  const [charge, setCharge] = useState(210);
-  let barras = [];
-  for (let i = 0; i <= bar; i++) {
+  const [charge, setCharge] = useState(0);
+
+  useEffect(() => {
+    // Use setTimeout to update the message after 2000 milliseconds (2 seconds)
+    const timeoutId = setTimeout(() => {
+      if (charge < bar * 100) {
+        setCharge(charge + 1);
+      }
+    }, 3000 / 100);
+
+    // Cleanup function to clear the timeout if the component unmounts
+    return () => clearTimeout(timeoutId);
+  }, [charge, bar]); // Empty dependency array ensures the effect runs only once
+
+  const barras = [];
+  for (let i = 0; i < bar; i++) {
     //calculate charge for this proggres bar
-    const entero = Math.floor(charge / 100);
+    const completeBars = Math.floor(charge / 100);
     let barCharge;
-    if (i < entero) {
+    if (i < completeBars) {
       barCharge = 100;
+    } else if (i > completeBars) {
+      barCharge = 0;
     } else {
       barCharge = charge % 100;
     }
