@@ -18,7 +18,7 @@ function ProgressBar({ key, charge }) {
 
 export function App() {
   const [bar, setBar] = useState(0);
-  const [charge, setCharge] = useState(10);
+  const [charge, setCharge] = useState(210);
   let barras = [];
   for (let i = 0; i <= bar; i++) {
     //calculate charge for this proggres bar
