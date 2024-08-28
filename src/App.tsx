@@ -1,10 +1,8 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 
 function App() {
   const [bar, setBar] = useState(0);
-  const [carga, setCarga] = useState(60);
+  const [carga, setCarga] = useState(10);
   let barras = [];
   for (let i = 0; i <= bar; i++) {
     barras.push(
